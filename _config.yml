@@ -1,0 +1,8 @@
+excerpt_separator: ""
+pygments: true
+markdown: kramdown
+url: http://wieczorek1990.github.io
+title: £ukasz Wieczorek's blog
+tagline: A log of everyday life
+description: My awesome new site
+paginate: 3
