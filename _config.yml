@@ -1,8 +1,9 @@
 excerpt_separator: ""
-pygments: true
+highlighter: rouge
 markdown: kramdown
 url: http://wieczorek1990.github.io
-title: �ukasz Wieczorek's blog
-tagline: A log of everyday life
-description: My awesome new site
+title: Łukasz Wieczorek's blog
+tagline: A slice of programmer's life
+description: Just sharing my thoughts…
+gems: [jekyll-paginate, kramdown]
 paginate: 3
