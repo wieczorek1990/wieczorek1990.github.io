@@ -1,0 +1,125 @@
+---
+published: true
+title: Warmup
+layout: post
+tags: [bash, debian, shell, linux]
+---
+# Intro
+
+I decided to use this blog as a place were I share things I discover when working as a software engineer.
+
+Starting with shell commands!
+
+I am using Debian and Bash or Fish (you might want to ask which operator has higher precedence here).
+
+## Line endings
+
+Ever thought how to convert those `^M` characters in VIM that represent Windows line endings (CRLF) to Unix line endings (LF)?
+
+You can do it with `tr` or `dos2unix`:
+
+```
+tr -d '\015' < $input > $output
+```
+
+or
+
+```
+dos2unix $input
+```
+
+If you need to convert all files in a directory use `find` with `exec` flag:
+
+```
+find $directory -type f -exec dos2unix {} \;
+```
+
+## Finding packages
+
+Now how do I know what package has the dos2unix executable?
+
+```
+dpkg -S $executable
+```
+
+there is also another program which does the same:
+
+```
+dlocate $executable
+```
+
+and another:
+
+~~~
+apt-file update
+apt-file search $executable
+~~~
+
+Notice that this produces lots of output if you give it just the name, try with full path instead.
+
+~~~
+whereis $executable
+which $executable
+apt-file search $full_executable_path
+~~~
+
+## Secure data erasure
+
+You sometimes do not want others to recover your files, say for example, with passwords right?
+
+~~~
+wipe $file
+wpie -r $directory
+~~~
+
+## Git history start rewrite
+
+You work with Git, right? How do you rebase the initial commit then?
+
+```
+git rebase --interactive --root
+```
+
+## In-place file modification
+
+You probably tried:
+
+```
+tr 'a' 'z' < $input > $input
+```
+
+somewhere in time and it did not work, leaving you with empty file.
+
+Well you cannot read and write at the same time from and to the same file because it is being processed.
+
+Think of it as changing the `for` loop index while in the loop.
+
+But you probably just want to do the operation in place, and there is a way.
+
+Ta da, da da dam: SPONGE!
+
+```
+tr 'a' 'z' < $input | sponge $input
+```
+
+# Outro
+
+## Please, please, please
+
+Please share the post if you liked it.
+
+Thanks!
+
+
+## Appendix
+
+Packages:
+
+`coreutils`, `dos2unix`, `findutils`, `dpkg`, `dlocate`, `apt-file`, `debianutils`, `wipe`, `git`, `moreutils`.
+
+Credits:
+
+* [http://stackoverflow.com/questions/2613800/how-to-convert-dos-windows-newline-crlf-to-unix-newline-n-in-bash-script](VonC)
+* [http://stackoverflow.com/questions/7068179/convert-line-endlings-for-whole-directory-tree-git](Andy)
+* [http://askubuntu.com/questions/57572/how-to-delete-files-in-secure-manner](Takkat)
+* [http://stackoverflow.com/questions/2246208/change-first-commit-of-project-with-git](ecdpalma)
