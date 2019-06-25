@@ -1,6 +1,6 @@
 ---
 published: true
-title: Keybaze mase
+title: LDAP nomenclature
 layout: post
 ---
 Recently I had to setup a local LDAP server.
