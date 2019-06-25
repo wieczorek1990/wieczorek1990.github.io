@@ -1,0 +1,13 @@
+---
+published: true
+title: Keybaze mase
+layout: post
+---
+Recently I had to setup a local LDAP server.
+
+It took me some time to figure out the naming used in LDAP world.
+
+* CN = Common Name
+* OU = Organizational Unit
+* DC = Domain Component
+* DN = Distinguished Name
