@@ -1,3 +1,34 @@
+body {
+  background-color: #fdf6e3;
+  color: #657b83;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #586e75;
+}
+
+.post-title {
+  color: #586e75;
+}
+
 .post-title > a {
   font-size: 3rem;
+  color: #586e75;
+}
+
+.masthead-title > a {
+  color: #586e75;
+}
+
+.masthead-title > small {
+  color: #93a1a1;
+}
+
+code.highlighter-rouge {
+  color: #dc322f;
+  background-color: #eee8d5;
+}
+
+pre.highlight {
+  background-color: #eee8d5;
 }
